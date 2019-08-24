@@ -1,2 +1,6 @@
+# Ignore VS Code settings
 /.vscode
+
+# Ignore stuff from JupyterLab
 **/.ipynb_checkpoints
+**/altair-data*
