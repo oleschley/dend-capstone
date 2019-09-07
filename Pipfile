@@ -8,6 +8,7 @@ requests = "*"
 pandas = "*"
 pyspark = "*"
 pyarrow = "*"
+psycopg2 = "*"
 
 [dev-packages]
 "autopep8" = "*"
