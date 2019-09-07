@@ -8,8 +8,5 @@
 # Cache
 __pycache__
 
-# Data directory
-data
-
 # Config
 *.conf
