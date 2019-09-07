@@ -4,3 +4,6 @@
 # Ignore stuff from JupyterLab
 **/.ipynb_checkpoints
 **/altair-data*
+
+# Ignore config
+*.conf
