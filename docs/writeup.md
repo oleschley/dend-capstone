@@ -1,29 +1,20 @@
 # Project Writeup
 
 ## Scenario
-We are working for consultancy 'Westerlies' that focuses on international trade. The company has decided to invest into their analytics structure. We have investigated both the data warehouse and data lake apporach. Our business has an ad-hoc and bespoke nature, so we require flexibility and rarely provide static reports. Most of our data sources are external and can be unstructured. We have come to the conclusion that building a data lake fits our needs quite well for most needs. However, trade data is central to most of our analysis and used in many 
+We are working for consultancy 'Westerlies' that focuses on international trade. Our consultants want to analyze the relationship between terms of trade of a country and trade flows. From our existing data lake in S3 buckets, we have decided to load the relevant sources into data warehouse using Redshift. This will allow our analysts to query the data fast and without the need of running an ETL process and focus on their analysis.
 
 ## Data Sources
-We have decided on two data sources that should be moved to our data lake first.
 
 
-### Harvard Dataverse - Trade Data
+### UN Comtrade Data
 
-Our first data source contains trade data. It is provided from Harvard Dataverse but based off 
+Our first data source contains UN Comtrade data. While it is available via API directly, for the scope of this project, we have used a version available from Harvard Dataverse.
 
 Location: `https://dataverse.harvard.edu/file.xhtml?persistentId=doi:10.7910/DVN/H8SFD2/C1KPMP&version=3.1`
 
-Citation:
+We then proceed to prepare and clean the data as required. Please refer to `notebooks/comtrade_prep.ipynb` for details.
 
-`The Growth Lab at Harvard University, 2019, "International Trade Data (SITC, Rev. 2)",`
-`https://doi.org/10.7910/DVN/H8SFD2, Harvard Dataverse, V3, UNF:6:sjmdhBqTZNTp+zX8dznTpw== [fileUNF]`
-
-
-Size `1.8GB`
-
-
-
-Missing mapping for location, partner and product ID.
+Country and commodity code mappings are available froim UN Comtrade. Please refer to `
 
 ### Exchange Rates
 Our second data source contains exchange rate information of the Euro against 32 other currencies.
