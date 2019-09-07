@@ -21,4 +21,16 @@ Location: `https://data.imf.org/?sk=388DFA60-1D26-4ADE-B505-A05A558D9A42&sId=147
 
 We wrangle the data to bring it into appropriate shape and map country names to ISO codes. Please refer to `notebooks/terms_of_trade.ipynb` for details.
 
-## Data Exploration
+### Data Model and ETL
+Our source data comes to what resembles a star schema quite closely. Hence, it makes most sense to follow that approach.
+
+We will build a fact table from our main sources UN Comtrade and IMF Terms of Trade. We can join both sources on the ISO code 3166 for country names. The mappings will be utilized as dimension tables. The implementation is fairly forward using two files:
+
+`cluster/queries.sql`: queries for the ETL process
+`cluster/etl.py`: runs the ETL process
+
+### Next steps
+While the current level of granularity of the UN Comtrade data is fine (annual, only top-level code). However, given the reduction in storage and compute cost, we will evaluate if we can get the data on a monthly basis at all product code levels. 
+
+We intend to use Apache Airflow to query the UN Comtrade API with a monthly scheduled job. This will increase our data more than hundredfold. We will have to monitor performance but feel that this would still be okay using Redshift. Using Apache Cassandra may not be the right choice for us given the ad-hoc nature of the business. Another alternative would be to have our analysts do more of the ETL work and use S3 in combination with Apache Spark. Or move towards DynamoDB given that we are using AWS already.
+
