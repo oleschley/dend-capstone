@@ -1,9 +1,12 @@
-# Ignore VS Code settings
+# VS Code settings
 /.vscode
 
-# Ignore stuff from JupyterLab
+# Stuff from JupyterLab
 **/.ipynb_checkpoints
 **/altair-data*
 
-# Ignore config
+# Cache
+__pycache__
+
+# Config
 *.conf
